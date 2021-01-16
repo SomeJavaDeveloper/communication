@@ -1,14 +1,23 @@
 package com.example.communication.model;
 
-import lombok.Getter;
-import lombok.Setter;
-import lombok.ToString;
-
-import javax.persistence.*;
 import java.time.LocalDateTime;
 import java.util.HashSet;
 import java.util.Objects;
 import java.util.Set;
+import javax.persistence.Access;
+import javax.persistence.AccessType;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
+import javax.persistence.MappedSuperclass;
+import lombok.Getter;
+import lombok.Setter;
+import lombok.ToString;
 
 @MappedSuperclass
 @Access(AccessType.FIELD)
@@ -31,7 +40,7 @@ public abstract class AbstractMessageEntity {
     @JoinColumn(name = "user_id")
     private User user;
 
-    @ManyToMany
+    @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(
             name = "message_likes",
             joinColumns = {@JoinColumn(name = "message_id")},
@@ -48,8 +57,20 @@ public abstract class AbstractMessageEntity {
     }
 
     //test constructors
+
+
     public AbstractMessageEntity(Long id, String text, String filename,
-                                 LocalDateTime postTime, User user) {
+        LocalDateTime postTime, User user, Set<User> likes) {
+        this.id = id;
+        this.text = text;
+        this.filename = filename;
+        this.postTime = postTime;
+        this.user = user;
+        this.likes = likes;
+    }
+
+    public AbstractMessageEntity(Long id, String text, String filename,
+        LocalDateTime postTime, User user) {
         this.id = id;
         this.text = text;
         this.filename = filename;
@@ -79,6 +100,8 @@ public abstract class AbstractMessageEntity {
         AbstractMessageEntity message = (Message) o;
         return Objects.equals(id, message.id);
     }
+
+
 
     @Override
     public int hashCode() {

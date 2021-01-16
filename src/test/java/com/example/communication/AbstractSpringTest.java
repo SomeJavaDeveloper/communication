@@ -2,6 +2,7 @@ package com.example.communication;
 
 import com.example.communication.repository.MessageRepository;
 import com.example.communication.repository.UserRepository;
+import com.example.communication.service.MainService;
 import com.example.communication.service.MessageService;
 import com.example.communication.service.UserService;
 import org.junit.runner.RunWith;
@@ -34,4 +35,7 @@ public class AbstractSpringTest {
 
   @Autowired
   protected MockMvc mockMvc;
+
+  @Autowired
+  protected MainService mainService;
 }

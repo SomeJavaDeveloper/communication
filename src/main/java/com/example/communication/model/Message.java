@@ -1,19 +1,18 @@
 package com.example.communication.model;
 
 import com.example.communication.model.dto.MessageDTO;
-import lombok.Getter;
-import lombok.RequiredArgsConstructor;
-import lombok.Setter;
-
-import javax.persistence.Entity;
-import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
-import javax.persistence.ManyToMany;
-import javax.persistence.OneToMany;
 import java.io.Serializable;
 import java.time.LocalDateTime;
 import java.util.HashSet;
 import java.util.Set;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.OneToMany;
+import lombok.Getter;
+import lombok.RequiredArgsConstructor;
+import lombok.Setter;
 
 @Getter
 @Setter
@@ -21,7 +20,7 @@ import java.util.Set;
 @Entity
 public class Message extends AbstractMessageEntity implements Serializable {
 
-    @OneToMany
+    @OneToMany(fetch = FetchType.EAGER)
     @JoinTable(
             name = "message_comments",
             joinColumns = {@JoinColumn(name = "message_id")}
@@ -32,9 +31,9 @@ public class Message extends AbstractMessageEntity implements Serializable {
         super(text, user);
     }
 
-    public Message(MessageDTO messageDTO) {
+    public Message(MessageDTO messageDTO, Set<User> likes) {
         super(messageDTO.getId(), messageDTO.getText(), messageDTO.getText(), messageDTO.getPostTime(),
-                messageDTO.getUser());
+                messageDTO.getUser(), likes);
         comments = messageDTO.getComments();
     }
 
