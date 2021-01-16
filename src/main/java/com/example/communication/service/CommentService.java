@@ -22,7 +22,7 @@ public class CommentService {
     this.messageRepository = messageRepository;
   }
 
-  public String comment(String text, MultipartFile file, User user,
+  public String addComment(String text, MultipartFile file, User user,
       Long messageId, RedirectAttributes redirectAttributes, String referer) throws IOException {
     UriComponents components = UriComponentsBuilder.fromHttpUrl(referer).build();
     components.getQueryParams()

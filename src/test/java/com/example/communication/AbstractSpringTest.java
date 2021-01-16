@@ -2,8 +2,10 @@ package com.example.communication;
 
 import com.example.communication.repository.MessageRepository;
 import com.example.communication.repository.UserRepository;
+import com.example.communication.service.CommentService;
 import com.example.communication.service.MainService;
 import com.example.communication.service.MessageService;
+import com.example.communication.service.ProfileService;
 import com.example.communication.service.UserService;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -38,4 +40,10 @@ public class AbstractSpringTest {
 
   @Autowired
   protected MainService mainService;
+
+  @Autowired
+  protected CommentService commentService;
+
+  @Autowired
+  protected ProfileService profileService;
 }

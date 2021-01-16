@@ -22,13 +22,13 @@ public class CommentController {
     }
 
     @PostMapping("/comment/{messageId}")
-    public String comment(@RequestParam String text,
+    public String addComment(@RequestParam String text,
                           @RequestParam MultipartFile file,
                           @AuthenticationPrincipal User user,
                           @PathVariable Long messageId,
                           RedirectAttributes redirectAttributes,
                           @RequestHeader(required = false) String referer) throws IOException {
 
-        return commentService.comment(text, file, user, messageId, redirectAttributes, referer);
+        return commentService.addComment(text, file, user, messageId, redirectAttributes, referer);
     }
 }
