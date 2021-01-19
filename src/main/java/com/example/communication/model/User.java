@@ -1,26 +1,40 @@
 package com.example.communication.model;
 
+import java.io.Serializable;
+import java.util.Collection;
+import java.util.HashSet;
+import java.util.Objects;
+import java.util.Set;
+import javax.persistence.CascadeType;
+import javax.persistence.CollectionTable;
+import javax.persistence.Column;
+import javax.persistence.ElementCollection;
+import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
+import javax.persistence.Table;
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.Size;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import lombok.Setter;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
-import javax.persistence.*;
-import javax.validation.constraints.Email;
-import javax.validation.constraints.NotEmpty;
-import javax.validation.constraints.Size;
-import java.util.Collection;
-import java.util.HashSet;
-import java.util.Objects;
-import java.util.Set;
-
 @Getter
 @Setter
 @RequiredArgsConstructor
 @Entity
 @Table(name = "usr")
-public class User implements UserDetails {
+public class User implements UserDetails, Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -153,23 +167,57 @@ public class User implements UserDetails {
         return !roles.isEmpty();
     }
 
+//    @Override
+//    public boolean equals(Object o) {
+//        if (this == o) return true;
+//        if (o == null || getClass() != o.getClass()) return false;
+//        User user = (User) o;
+//        return Objects.equals(id, user.id);
+//    }
+//
+//    @Override
+//    public int hashCode() {
+//        return Objects.hash(id);
+//    }
+
+
     @Override
     public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
+        if (this == o) {
+            return true;
+        }
+        if (!(o instanceof User)) {
+            return false;
+        }
         User user = (User) o;
-        return Objects.equals(id, user.id);
+        return isActive() == user.isActive() && getId().equals(user.getId()) && Objects
+            .equals(getUsername(), user.getUsername()) && Objects
+            .equals(getPassword(), user.getPassword()) && Objects
+            .equals(getEmail(), user.getEmail()) && Objects
+            .equals(getRealName(), user.getRealName()) && Objects
+            .equals(getDateOfBirth(), user.getDateOfBirth()) && Objects
+            .equals(getCity(), user.getCity()) && Objects.equals(getRoles(), user.getRoles())
+            && Objects.equals(getSubscribers(), user.getSubscribers()) && Objects
+            .equals(getSubscriptions(), user.getSubscriptions());
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id);
+        return Objects.hash(getId());
     }
 
     @Override
     public String toString() {
         return "User{" +
-                "id=" + id +
-                '}';
+            "id=" + id +
+            ", username='" + username + '\'' +
+            ", email='" + email + '\'' +
+            ", active=" + active +
+            ", profilePic='" + profilePic + '\'' +
+            ", realName='" + realName + '\'' +
+            ", dateOfBirth='" + dateOfBirth + '\'' +
+            ", city='" + city + '\'' +
+            ", roles=" + roles +
+            '}';
     }
 }

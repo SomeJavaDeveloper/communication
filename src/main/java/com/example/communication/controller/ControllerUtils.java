@@ -1,6 +1,9 @@
 package com.example.communication.controller;
 
-import com.example.communication.model.*;
+import com.example.communication.model.Comment;
+import com.example.communication.model.Message;
+import com.example.communication.model.Role;
+import com.example.communication.model.User;
 import com.example.communication.repository.CommentRepository;
 import com.example.communication.repository.MessageRepository;
 import com.example.communication.repository.UserRepository;
@@ -10,17 +13,16 @@ import com.google.cloud.storage.BlobId;
 import com.google.cloud.storage.BlobInfo;
 import com.google.cloud.storage.Storage;
 import com.google.cloud.storage.StorageRoles;
-import org.springframework.beans.factory.annotation.Value;
-import org.springframework.jdbc.core.JdbcTemplate;
-import org.springframework.stereotype.Service;
-import org.springframework.web.multipart.MultipartFile;
-
 import java.io.IOException;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.Objects;
 import java.util.Optional;
 import java.util.UUID;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 
 @Service
 public class ControllerUtils {
@@ -87,47 +89,47 @@ public class ControllerUtils {
         return false;
     }
 
-    public static void saveMessageEntity(MultipartFile file, AbstractMessageEntity messageEntity) throws IOException {
+//    public static void saveMessageEntity(MultipartFile file, AbstractMessageEntity messageEntity) throws IOException {
+//        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+//        String formattedDateTime = LocalDateTime.now().format(formatter);
+//        messageEntity.setPostTime(LocalDateTime.parse(formattedDateTime, formatter));
+//
+//        if (file != null && !Objects.requireNonNull(file.getOriginalFilename()).isEmpty()) {
+//            String resultFilename = fileSave(file);
+//            messageEntity.setFilename(resultFilename);
+//        }
+//        if (messageEntity instanceof Comment) {
+//            commentRepository.save((Comment) messageEntity);
+//        } else {
+//            messageRepository.save((Message) messageEntity);
+//        }
+//    }
+
+    public static void saveComment(MultipartFile file, Comment comment) throws IOException {
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
         String formattedDateTime = LocalDateTime.now().format(formatter);
-        messageEntity.setPostTime(LocalDateTime.parse(formattedDateTime, formatter));
+        comment.setPostTime(LocalDateTime.parse(formattedDateTime, formatter));
 
         if (file != null && !Objects.requireNonNull(file.getOriginalFilename()).isEmpty()) {
             String resultFilename = fileSave(file);
-            messageEntity.setFilename(resultFilename);
+            comment.setFilename(resultFilename);
         }
-        if (messageEntity instanceof Comment) {
-            commentRepository.save((Comment) messageEntity);
-        } else {
-            messageRepository.save((Message) messageEntity);
-        }
+
+        commentRepository.save(comment);
     }
 
-//    public static void saveComment(MultipartFile file, Comment comment) throws IOException {
-//        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
-//        String formattedDateTime = LocalDateTime.now().format(formatter);
-//        comment.setPostTime(LocalDateTime.parse(formattedDateTime, formatter));
-//
-//        if (file != null && !Objects.requireNonNull(file.getOriginalFilename()).isEmpty()) {
-//            String resultFilename = fileSave(file);
-//            comment.setFilename(resultFilename);
-//        }
-//
-//        commentRepository.save(comment);
-//    }
-//
-//    public static void saveMessage(MultipartFile file, Message message) throws IOException {
-//        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
-//        String formattedDateTime = LocalDateTime.now().format(formatter);
-//        message.setPostTime(LocalDateTime.parse(formattedDateTime, formatter));
-//
-//        if (file != null && !Objects.requireNonNull(file.getOriginalFilename()).isEmpty()) {
-//            String resultFilename = fileSave(file);
-//            message.setFilename(resultFilename);
-//        }
-//
-//        messageRepository.save(message);
-//    }
+    public static void saveMessage(MultipartFile file, Message message) throws IOException {
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+        String formattedDateTime = LocalDateTime.now().format(formatter);
+        message.setPostTime(LocalDateTime.parse(formattedDateTime, formatter));
+
+        if (file != null && !Objects.requireNonNull(file.getOriginalFilename()).isEmpty()) {
+            String resultFilename = fileSave(file);
+            message.setFilename(resultFilename);
+        }
+
+        messageRepository.save(message);
+    }
 
     public static void saveMessage(MultipartFile file, User user) throws IOException {
         if (file != null && !Objects.requireNonNull(file.getOriginalFilename()).isEmpty()) {

@@ -12,7 +12,6 @@ import com.example.communication.AbstractSpringTest;
 import com.example.communication.model.User;
 import com.example.communication.model.dto.MessageDTO;
 import java.io.IOException;
-import java.sql.SQLException;
 import java.util.List;
 import org.junit.jupiter.api.Test;
 import org.springframework.test.context.jdbc.Sql;
@@ -72,10 +71,10 @@ class ProfileServiceTest extends AbstractSpringTest {
     assertEquals(userDB.getSubscribers().size(), 0);
   }
 
-  @Test
-  void repost() throws SQLException {
+//  @Test
+//  void repost() throws SQLException {
 //    String redirectLink = profileService.repost(
 //        1004L, ADMIN, new RedirectAttributesModelMap(), "http://localhost:8080/profile/1004");
 //    assertEquals(redirectLink, "redirect:/messages/" + 1004 + "/like");
-  }
+//  }
 }

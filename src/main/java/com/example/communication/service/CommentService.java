@@ -36,7 +36,7 @@ public class CommentService {
     }
 
     Comment comment = new Comment(text, user, message);
-    ControllerUtils.saveMessageEntity(file, comment);
+    ControllerUtils.saveComment(file, comment);
 
     return "redirect:" + components.getPath();
   }

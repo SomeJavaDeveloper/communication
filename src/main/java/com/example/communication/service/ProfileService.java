@@ -35,7 +35,7 @@ public class ProfileService {
 
   public void addMessage(User user, String text, MultipartFile file) throws IOException {
     Message message = new Message(text, user);
-    ControllerUtils.saveMessageEntity(file, message);
+    ControllerUtils.saveMessage(file, message);
   }
 
   public User getUserById(Long id) {

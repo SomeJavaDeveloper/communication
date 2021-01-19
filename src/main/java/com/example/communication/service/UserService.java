@@ -39,12 +39,12 @@ public class UserService implements UserDetailsService {
     }
 
 
-    public Page<User> getAllUsers(String user, String filter, Pageable pageable) {
+    public Page<User> getAllUsers(String username, String filter, Pageable pageable) {
         Page<User> users;
         if (filter != null && !filter.isEmpty()) {
-            users = userRepository.findAllByUsername(filter, user, pageable);
+            users = userRepository.findAllByUsername(filter, username, pageable);
         } else {
-            users = userRepository.findAll(user, pageable);
+            users = userRepository.findAll(username, pageable);
         }
 
         return users;
