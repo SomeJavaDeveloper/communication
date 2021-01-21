@@ -29,7 +29,7 @@ class MainServiceTest extends AbstractSpringTest {
   void addMessage() throws IOException {
     mainService.addMessage(ADMIN, "Brand new message!", multipartFile);
     List<MessageDTO> actualMessages = messageService.getAllMessagesTest("", ADMIN);
-    assertEquals(actualMessages.size(), 3);
+    assertEquals(3, actualMessages.size());
 
     List<MessageDTO> newMessage = messageService.getAllMessagesTest("Brand new message!", ADMIN);
     assertFalse(newMessage.isEmpty());
@@ -40,18 +40,7 @@ class MainServiceTest extends AbstractSpringTest {
   void delete() {
     mainService.delete(ADMIN, 1003L, new RedirectAttributesModelMap(), "http://localhost:8080/");
     List<MessageDTO> actualMessages = messageService.getAllMessagesTest("", ADMIN);
-    assertEquals(actualMessages.size(), 1);
-    assertEquals(actualMessages.get(0), USER_MESSAGE);
+    assertEquals(1, actualMessages.size());
+    assertEquals(USER_MESSAGE, actualMessages.get(0));
   }
-
-//  @Test
-//  void like() {
-//    mainService.like(ADMIN, new Message(ADMIN_MESSAGE, ADMIN_LIKES), new RedirectAttributesModelMap(), "http://localhost:8080/");
-//    Message m = messageRepository.findById(1003L).get();
-//    assertEquals(m.getLikes().size(), 2);
-//  }
-//
-//  @Test
-//  void dislike() {
-//  }
 }

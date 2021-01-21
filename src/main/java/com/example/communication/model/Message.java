@@ -100,7 +100,6 @@ public class Message implements Serializable{
             ", postTime=" + postTime +
             ", user=" + user +
             ", likes=" + likes +
-            ", comments=" + comments +
             '}';
     }
 
@@ -117,8 +116,7 @@ public class Message implements Serializable{
             && Objects.equals(getFilename(), message.getFilename()) && Objects
             .equals(getPostTime(), message.getPostTime()) && Objects
             .equals(getUser(), message.getUser()) && Objects
-            .equals(getLikes(), message.getLikes()) && Objects
-            .equals(getComments(), message.getComments());
+            .equals(getLikes(), message.getLikes());
     }
 
     @Override

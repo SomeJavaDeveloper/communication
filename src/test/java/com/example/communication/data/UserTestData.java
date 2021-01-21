@@ -14,7 +14,7 @@ import org.springframework.web.multipart.MultipartFile;
 public class UserTestData {
   public static final User ADMIN = new User
       (1001L, "admin", "admin123", true, "admin123@gmail.com", "default-profile-icon.png",
-          "Artyom Kosenko", "1990-10-12", "Penza", EnumSet.of(Role.USER, Role.ADMIN));
+          "Artyom Kosenko", "1990-10-12", "Penza", EnumSet.of(Role.ADMIN, Role.USER));
 
   public static final User USER = new User
       (1002L, "user", "user123", true, "user123@gmail.com", "default-profile-icon.png",
@@ -42,7 +42,7 @@ public class UserTestData {
   }
 
   public static User getNew() {
-    return new User("New user", "password","new_user@rambler.ru", true, EnumSet.of(Role.USER));
+    return new User("userr", "user123","user13@gmail.com", true, EnumSet.of(Role.USER));
   }
 
   public static User getUpdated() {

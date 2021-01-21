@@ -190,15 +190,16 @@ public class User implements UserDetails, Serializable {
             return false;
         }
         User user = (User) o;
-        return isActive() == user.isActive() && getId().equals(user.getId()) && Objects
-            .equals(getUsername(), user.getUsername()) && Objects
-            .equals(getPassword(), user.getPassword()) && Objects
-            .equals(getEmail(), user.getEmail()) && Objects
-            .equals(getRealName(), user.getRealName()) && Objects
-            .equals(getDateOfBirth(), user.getDateOfBirth()) && Objects
-            .equals(getCity(), user.getCity()) && Objects.equals(getRoles(), user.getRoles())
-            && Objects.equals(getSubscribers(), user.getSubscribers()) && Objects
-            .equals(getSubscriptions(), user.getSubscriptions());
+        return  isActive() == user.isActive() && getId().equals(user.getId()) &&
+                Objects.equals(getUsername(), user.getUsername()) &&
+                Objects.equals(getEmail(), user.getEmail()) &&
+                Objects.equals(getRealName(), user.getRealName()) &&
+                Objects.equals(getDateOfBirth(), user.getDateOfBirth()) &&
+                Objects.equals(getCity(), user.getCity()) &&
+                Objects.equals(getRoles(), user.getRoles())
+//                Objects.equals(getSubscribers(), user.getSubscribers()) &&
+//                Objects.equals(getSubscriptions(), user.getSubscriptions())
+                ;
     }
 
     @Override

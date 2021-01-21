@@ -31,12 +31,12 @@ class ProfileServiceTest extends AbstractSpringTest {
   @Test
   void addMessage() throws IOException {
     List<MessageDTO> actualMessages = messageService.getAllMessagesTest("", ADMIN);
-    assertEquals(actualMessages.size(), 2);
-    assertEquals(actualMessages, MESSAGES);
+    assertEquals(2, actualMessages.size());
+    assertEquals(MESSAGES, actualMessages);
 
     profileService.addMessage(ADMIN, "Brand new message!", multipartFile);
     actualMessages = messageService.getAllMessagesTest("", ADMIN);
-    assertEquals(actualMessages.size(), 3);
+    assertEquals(3, actualMessages.size());
 
     List<MessageDTO> newMessage = messageService.getAllMessagesTest("Brand new message!", ADMIN);
     assertFalse(newMessage.isEmpty());
@@ -46,35 +46,28 @@ class ProfileServiceTest extends AbstractSpringTest {
   @Test
   void getUserById() {
     User user = profileService.getUserById(1001L);
-    assertEquals(user, ADMIN);
+    assertEquals(ADMIN, user);
   }
 
   @Test
   void subscribe() {
     User userDB = userRepository.findById(1002L).get();
-    assertEquals(userDB.getSubscribers().size(), 0);
+    assertEquals(0, userDB.getSubscribers().size());
 
     profileService.subscribe(1002L, ADMIN);
     userDB = userRepository.findById(1002L).get();
-    assertEquals(userDB.getSubscribers().size(), 1);
+    assertEquals(1, userDB.getSubscribers().size());
     assertTrue(userDB.getSubscribers().contains(ADMIN));
   }
 
   @Test
   void unsubscribe() {
     User userDB = userRepository.findById(1001L).get();
-    assertEquals(userDB.getSubscribers().size(), 1);
+    assertEquals(1, userDB.getSubscribers().size());
     assertTrue(userDB.getSubscribers().contains(USER));
 
     profileService.unsubscribe(1001L, USER);
     userDB = userRepository.findById(1001L).get();
-    assertEquals(userDB.getSubscribers().size(), 0);
+    assertEquals(0, userDB.getSubscribers().size());
   }
-
-//  @Test
-//  void repost() throws SQLException {
-//    String redirectLink = profileService.repost(
-//        1004L, ADMIN, new RedirectAttributesModelMap(), "http://localhost:8080/profile/1004");
-//    assertEquals(redirectLink, "redirect:/messages/" + 1004 + "/like");
-//  }
 }

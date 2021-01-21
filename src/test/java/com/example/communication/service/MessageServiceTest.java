@@ -24,11 +24,11 @@ class MessageServiceTest extends AbstractSpringTest {
   @Test
   void getAllMessagesTest() {
     List<MessageDTO> messages = messageService.getAllMessagesTest("", ADMIN);
-    assertEquals(messages.size(), 2);
-    assertEquals(messages, MESSAGES);
+    assertEquals(2, messages.size());
+    assertEquals(MESSAGES, messages);
 
     messages = messageService.getAllMessagesTest("Admin message", ADMIN);
-    assertEquals(messages.size(), 1);
-    assertEquals(messages.get(0), ADMIN_MESSAGE);
+    assertEquals(1, messages.size());
+    assertEquals(ADMIN_MESSAGE, messages.get(0));
   }
 }

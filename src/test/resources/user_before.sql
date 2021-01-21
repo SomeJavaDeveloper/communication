@@ -1,5 +1,5 @@
-delete from user_role;
-delete from usr;
+-- delete from user_role;
+-- delete from usr;
 
 insert into usr (id, username, password, active, email, profile_pic, real_name, date_of_birth, city)
 values (1000, 'usr', '$2a$08$3OVVF0fxn/zHgUOcOXalL.7FfHD7/xBsvOFs3bjGz9v3NV.bJYQiC',

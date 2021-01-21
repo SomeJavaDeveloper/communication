@@ -21,7 +21,7 @@ class EditServiceTest extends AbstractSpringTest {
   @Test
   void edit() throws IOException {
     User actualUser = userRepository.findById(1002L).get();
-    assertEquals(actualUser, USER);
+    assertEquals(USER, actualUser);
     editService.edit(USER, "edited user", "new rl nm", "1995-11-01", "Penza", multipartFile);
 
     actualUser = userRepository.findById(1002L).get();
@@ -29,6 +29,6 @@ class EditServiceTest extends AbstractSpringTest {
         (1002L, "edited user", "user123", true, "user123@gmail.com",
             "somejaba.jpg", "new rl nm",
             "1995-11-01", "Penza", EnumSet.of(Role.USER));
-    assertEquals(actualUser, updatedUser);
+    assertEquals(updatedUser, actualUser);
   }
 }

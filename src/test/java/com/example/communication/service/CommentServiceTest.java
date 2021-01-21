@@ -24,12 +24,12 @@ class CommentServiceTest extends AbstractSpringTest {
   @Test
   void addCommentTest() throws IOException {
     Message m = messageRepository.findById(1004L).get();
-    assertEquals(m.getComments().size(), 1);
+    assertEquals(1, m.getComments().size());
 
     commentService.addComment("Brand new comment!", multipartFile, ADMIN,
         1004L, new RedirectAttributesModelMap(), "http://localhost:8080/");
     messageRepository.findById(1004L).get();
     m = messageRepository.findById(1004L).get();
-    assertEquals(m.getComments().size(), 2);
+    assertEquals(2, m.getComments().size());
   }
 }

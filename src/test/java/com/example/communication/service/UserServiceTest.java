@@ -25,13 +25,13 @@ class UserServiceTest extends AbstractSpringTest {
   @Test
   void getAllUsers() {
     Page<User> actualUsers = userService.getAllUsers("admin", "", PageRequest.of(0, 5));
-    assertEquals(actualUsers.getContent(), Arrays.asList(USR, USER));
+    assertEquals(Arrays.asList(USR, USER), actualUsers.getContent());
   }
 
   @Test
   void getAllUsersTest() {
     List<User> actualUsers = userService.getAllUsersTest();
-    assertEquals(actualUsers, USERS);
+    assertEquals(USERS, actualUsers);
   }
 
   @Test
@@ -42,11 +42,11 @@ class UserServiceTest extends AbstractSpringTest {
   @Test
   void deleteUserInUserList() {
     List<User> actualUsers = userService.getAllUsersTest();
-    assertEquals(actualUsers, USERS);
+    assertEquals(USERS, actualUsers);
 
     userService.deleteUserInUserList(USER, ADMIN, PageRequest.of(0, 5));
     actualUsers = userService.getAllUsersTest();
-    assertEquals(actualUsers.size(), 2);
+    assertEquals(2, actualUsers.size());
     assertTrue(actualUsers.contains(ADMIN));
   }
 }
