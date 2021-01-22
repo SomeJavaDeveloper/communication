@@ -3,11 +3,10 @@ package com.example.communication.model.dto;
 import com.example.communication.model.Comment;
 import com.example.communication.model.Message;
 import com.example.communication.model.User;
-import lombok.Getter;
-
 import java.time.LocalDateTime;
 import java.util.Objects;
 import java.util.Set;
+import lombok.Getter;
 
 @Getter
 public class MessageDTO {

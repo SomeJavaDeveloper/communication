@@ -1,10 +1,9 @@
 package com.example.communication.repository;
 
 import com.example.communication.model.chat.ChatRoom;
+import java.util.Optional;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
-
-import java.util.Optional;
 
 public interface ChatRoomRepository extends JpaRepository<ChatRoom, Long> {
 

@@ -3,15 +3,14 @@ package com.example.communication.repository;
 import com.example.communication.model.Message;
 import com.example.communication.model.User;
 import com.example.communication.model.dto.MessageDTO;
+import java.util.List;
+import java.util.Set;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
-
-import java.util.List;
-import java.util.Set;
 
 public interface MessageRepository extends JpaRepository<Message, Long> {
 

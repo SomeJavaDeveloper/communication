@@ -2,11 +2,9 @@ package com.example.communication.interceptor;
 
 import com.example.communication.model.User;
 import com.example.communication.repository.UserRepository;
-
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
