@@ -1,11 +1,11 @@
-package com.example.communication.data;
+package com.example.communication.tests.data;
 
-import static com.example.communication.data.MessageTestData.ADMIN_LIKES;
-import static com.example.communication.data.MessageTestData.ADMIN_MESSAGE;
-import static com.example.communication.data.MessageTestData.USER_LIKES;
-import static com.example.communication.data.MessageTestData.USER_MESSAGE;
-import static com.example.communication.data.UserTestData.ADMIN;
-import static com.example.communication.data.UserTestData.USER;
+import static com.example.communication.tests.data.MessageTestData.ADMIN_LIKES;
+import static com.example.communication.tests.data.MessageTestData.ADMIN_MESSAGE;
+import static com.example.communication.tests.data.MessageTestData.USER_LIKES;
+import static com.example.communication.tests.data.MessageTestData.USER_MESSAGE;
+import static com.example.communication.tests.data.UserTestData.ADMIN;
+import static com.example.communication.tests.data.UserTestData.USER;
 
 import com.example.communication.model.Comment;
 import com.example.communication.model.Message;

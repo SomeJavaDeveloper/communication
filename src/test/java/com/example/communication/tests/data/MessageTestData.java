@@ -1,9 +1,9 @@
-package com.example.communication.data;
+package com.example.communication.tests.data;
 
-import static com.example.communication.data.CommentTestData.ADMIN_COMMENT;
-import static com.example.communication.data.CommentTestData.USER_COMMENT;
-import static com.example.communication.data.UserTestData.ADMIN;
-import static com.example.communication.data.UserTestData.USER;
+import static com.example.communication.tests.data.CommentTestData.ADMIN_COMMENT;
+import static com.example.communication.tests.data.CommentTestData.USER_COMMENT;
+import static com.example.communication.tests.data.UserTestData.ADMIN;
+import static com.example.communication.tests.data.UserTestData.USER;
 
 import com.example.communication.model.Comment;
 import com.example.communication.model.Message;

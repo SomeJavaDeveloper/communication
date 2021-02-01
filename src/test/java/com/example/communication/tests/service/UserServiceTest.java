@@ -1,9 +1,9 @@
-package com.example.communication.service;
+package com.example.communication.tests.service;
 
-import static com.example.communication.data.UserTestData.ADMIN;
-import static com.example.communication.data.UserTestData.USER;
-import static com.example.communication.data.UserTestData.USERS;
-import static com.example.communication.data.UserTestData.USR;
+import static com.example.communication.tests.data.UserTestData.ADMIN;
+import static com.example.communication.tests.data.UserTestData.USER;
+import static com.example.communication.tests.data.UserTestData.USERS;
+import static com.example.communication.tests.data.UserTestData.USR;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 

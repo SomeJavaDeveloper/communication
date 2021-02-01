@@ -1,4 +1,4 @@
-package com.example.communication.integration;
+package com.example.communication.tests.integration;
 
 
 import static org.springframework.security.test.web.servlet.request.SecurityMockMvcRequestBuilders.formLogin;
@@ -12,6 +12,8 @@ import com.example.communication.AbstractSpringTest;
 import org.junit.Test;
 import org.springframework.test.context.jdbc.Sql;
 
+@Sql(value = {"/user_before.sql"}, executionPhase = Sql.ExecutionPhase.BEFORE_TEST_METHOD)
+@Sql(value = {"/user_after.sql"}, executionPhase = Sql.ExecutionPhase.AFTER_TEST_METHOD)
 public class LoginTest extends AbstractSpringTest {
 
   @Test
@@ -23,7 +25,6 @@ public class LoginTest extends AbstractSpringTest {
   }
 
   @Test
-  @Sql(value = {"/user_before.sql"}, executionPhase = Sql.ExecutionPhase.BEFORE_TEST_METHOD)
   public void correctLoginTest() throws Exception {
     this.mockMvc.perform(formLogin().user("admin").password("admin123"))
         .andExpect(status().is3xxRedirection())

@@ -1,8 +1,8 @@
-package com.example.communication.service;
+package com.example.communication.tests.service;
 
-import static com.example.communication.data.MessageTestData.ADMIN_MESSAGE;
-import static com.example.communication.data.MessageTestData.MESSAGES;
-import static com.example.communication.data.UserTestData.ADMIN;
+import static com.example.communication.tests.data.MessageTestData.ADMIN_MESSAGE;
+import static com.example.communication.tests.data.MessageTestData.MESSAGES;
+import static com.example.communication.tests.data.UserTestData.ADMIN;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import com.example.communication.AbstractSpringTest;

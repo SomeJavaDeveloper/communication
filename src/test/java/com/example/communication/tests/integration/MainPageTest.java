@@ -1,4 +1,4 @@
-package com.example.communication.integration;
+package com.example.communication.tests.integration;
 
 import static org.springframework.security.test.web.servlet.response.SecurityMockMvcResultMatchers.authenticated;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
@@ -19,11 +19,12 @@ import org.springframework.test.context.jdbc.Sql;
 @Sql(value = {"/message_likes_before.sql"}, executionPhase = Sql.ExecutionPhase.BEFORE_TEST_METHOD)
 @Sql(value = {"/message_likes_after.sql"}, executionPhase = Sql.ExecutionPhase.AFTER_TEST_METHOD)
 @Sql(value = {"/user_after.sql"}, executionPhase = Sql.ExecutionPhase.AFTER_TEST_METHOD)
-public class ProfilePageTest extends AbstractSpringTest {
+
+public class MainPageTest extends AbstractSpringTest {
 
   @Test
   public void navbarNameTest() throws Exception {
-    this.mockMvc.perform(get("/profile/1001"))
+    this.mockMvc.perform(get("/"))
         .andDo(print())
         .andExpect(authenticated())
         .andExpect(xpath("//*[@id='navbarUsername']/div").string("\n"
@@ -34,72 +35,31 @@ public class ProfilePageTest extends AbstractSpringTest {
 
   @Test
   public void messageNameTest() throws Exception {
-    this.mockMvc.perform(get("/profile/1001"))
+    this.mockMvc.perform(get("/"))
         .andDo(print())
         .andExpect(authenticated())
         .andExpect(xpath("//*[@id='messageUsername']").string("admin"));
   }
 
   @Test
-  public void postFormTest() throws Exception {
-    this.mockMvc.perform(get("/profile/1001"))
-        .andDo(print())
-        .andExpect(authenticated())
-        .andExpect(xpath("//*[@id='postForm']").exists());
-  }
-
-  @Test
   public void messageTextTest() throws Exception {
-    this.mockMvc.perform(get("/profile/1001"))
+    this.mockMvc.perform(get("/"))
         .andDo(print())
         .andExpect(authenticated())
-        .andExpect(xpath("//*[@id='messageText']").string("Admin message"));
+        .andExpect(xpath("//*[@id='messageText']").string("\n"
+            + "            \n"
+            + "              Admin message\n"
+            + "            \n"
+            + "          "));
   }
 
   @Test
   public void messageCommentTest() throws Exception {
-    this.mockMvc.perform(get("/profile/1001"))
+    this.mockMvc.perform(get("/"))
         .andDo(print())
         .andExpect(authenticated())
         .andExpect(xpath("//*[@id='messageComment']").string("\n"
             + "                  Admin comment\n"
             + "                "));
   }
-
-  @Test
-  public void userNameTest() throws Exception {
-    this.mockMvc.perform(get("/profile/1001"))
-        .andDo(print())
-        .andExpect(authenticated())
-        .andExpect(xpath("//*[@id='userName']").string("admin"));
-  }
-
-  @Test
-  public void realNameTest() throws Exception {
-    this.mockMvc.perform(get("/profile/1001"))
-        .andDo(print())
-        .andExpect(authenticated())
-        .andExpect(xpath("//*[@id='realName']").string("Real name:\n"
-            + "            Artyom Kosenko\n"
-            + "      "));
-  }
-
-  //Find out the problem
-  @Test
-  public void subscribersCountTest() throws Exception {
-    this.mockMvc.perform(get("/profile/1001"))
-        .andDo(print())
-        .andExpect(authenticated())
-        .andExpect(xpath("//*[@id='subscribersCount']").string("0"));
-  }
-
-  @Test
-  public void subscriptionsCountTest() throws Exception {
-    this.mockMvc.perform(get("/profile/1001"))
-        .andDo(print())
-        .andExpect(authenticated())
-        .andExpect(xpath("//*[@id='subscriptionsCount']").string("0"));
-  }
-
-
 }

@@ -1,4 +1,4 @@
-package com.example.communication.data;
+package com.example.communication.tests.data;
 
 import com.example.communication.model.Role;
 import com.example.communication.model.User;

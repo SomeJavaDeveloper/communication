@@ -1,4 +1,4 @@
-package com.example.communication.integration;
+package com.example.communication.tests.integration;
 
 import static org.springframework.security.test.web.servlet.response.SecurityMockMvcResultMatchers.authenticated;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
