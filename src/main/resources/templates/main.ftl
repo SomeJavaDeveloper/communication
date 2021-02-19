@@ -20,7 +20,7 @@
         <div class="form-group">
           <div class="custom-file">
             <input class="custom-file-input" type="file" name="file" id="customFile" onchange="changeText(this)"/>
-            <label class="custom-file-label" for="customFile" id="chooseFile">Choose file</label>
+            <label class="custom-file-label" for="customFile" id="chooseFileLabel">Choose file</label>
           </div>
         </div>
         <input type="hidden" name="_csrf" value="${_csrf.token}"/>
@@ -31,11 +31,16 @@
     </div>
   </div>
   <script type="text/javascript">
-      $(document).on('change', '.custom-file-input', function (event) {
-          $(this).next('.custom-file-label').html(event.target.files[0].name);
+    const fileInput = document.querySelector('#customFile');
 
-      });
+    fileInput.addEventListener('change', (e) => {
+      const [file] = e.target.files;
+
+      document.querySelector('#chooseFileLabel').innerHTML = file.name || 'Choose file';
+    });
   </script>
+
+
 
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 
@@ -68,7 +73,7 @@
               <h5 class="card-title">
                   <@p.profilePicture message.user.profilePic 50 50/>
                 <a href="/profile/${message.user.id}" id="messageUsername">${message.user.username}</a>
-                  ${formatDateTime(message.postTime, 'MMM-dd-YYYY HH:mm')}
+                  ${formatDateTime(message.postTime, 'dd.MM.yyyy HH:mm')}
               </h5>
             </div>
             <div class="col-1">
@@ -140,7 +145,7 @@
               <div class="form-group">
                 <div class="custom-file">
                   <input class="custom-file-input" type="file" name="file" id="customFile" onchange="changeText(this)"/>
-                  <label class="custom-file-label" for="customFile" id="chooseFile">Choose file</label>
+                  <label class="custom-file-label" for="customFile" id="chooseFileComment">Choose file</label>
                 </div>
               </div>
               <input type="hidden" name="_csrf" value="${_csrf.token}"/>

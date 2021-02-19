@@ -120,7 +120,7 @@
               <h5 class="card-title">
                   <@p.profilePicture message.user.profilePic 50 50/>
                 <a href="/profile/${message.user.id}" id="messageUsername">${message.user.username}</a>
-                  ${formatDateTime(message.postTime, 'MMM-dd-YYYY HH:mm')}
+                  ${formatDateTime(message.postTime, 'dd.MM.yyyy HH:mm')}
               </h5>
             </div>
             <div class="col-1">
