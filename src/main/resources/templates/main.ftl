@@ -2,6 +2,7 @@
 <#import "parts/login.ftl" as l>
 <#include "parts/security.ftl">
 <#import "parts/profilePicture.ftl" as p>
+<#import "parts/modalPic.ftl" as m>
 <#import "parts/pager.ftl" as pgr>
 
 <@c.page>
@@ -97,8 +98,11 @@
             </p>
           </div>
             <#if message.filename??>
-              <img src="https://storage.googleapis.com/communication-network/${message.filename}" class="rounded mx-auto mt-4 md-1" alt="No pic :(" width="540"
-                   height="260"/>
+                <img src="https://storage.googleapis.com/communication-network/${message.filename}"
+                     id="messagePic" class="rounded mx-auto mt-4 md-1" alt="No pic :(" width="100%" data-toggle="modal" data-target="#bigPic"/>
+
+<#--                надо что-то делать-->
+                <@m.modalPic message.filename 700 700/>
             </#if>
 
           <div class="mx-3 my-1" style="font-size: 20px"><a href="/messages/${message.id}/like"

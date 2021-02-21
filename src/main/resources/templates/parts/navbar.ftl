@@ -10,22 +10,17 @@
 
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
-      <li class="nav-item">
-        <a class="nav-link" href="/">Messages</a>
-      </li>
         <li class="nav-item">
             <a class="nav-link" href="/user">User list</a>
         </li>
-        <#if isAuthorized>
-            <li class="nav-item ml-5">
-              <form method="get" action="/" class="form-inline">
-                <label>
-                  <input type="text" name="filter" class="form-control" placeholder="Search for message"/>
-                </label>
+          <li class="nav-item mx-4" id="navSearch" >
+            <form method="get" action="/" class="form-inline">
+              <label>
+                <input type="text" name="filter" class="form-control" placeholder="Search for message"/>
+              </label>
                 <button type="submit" class="btn btn-primary ml-2">Search</button>
-              </form>
-            </li>
-        </#if>
+            </form>
+          </li>
     </ul>
     <#if isAuthorized>
     <div class="nav-item mr-3" style="font-size: 130%">

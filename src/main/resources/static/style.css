@@ -1,3 +1,17 @@
 body {
   color: #113;
 }
+
+#messagePic {
+  max-width: 500px;
+  min-width: 500px;
+}
+
+#messagePicBig {
+  max-width: 700px;
+  min-width: 700px;
+}
+
+/*#navSearch {*/
+/*  padding-left: 300px;*/
+/*}*/
