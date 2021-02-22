@@ -99,10 +99,10 @@
           </div>
             <#if message.filename??>
                 <img src="https://storage.googleapis.com/communication-network/${message.filename}"
-                     id="messagePic" class="rounded mx-auto mt-4 md-1" alt="No pic :(" width="100%" data-toggle="modal" data-target="#bigPic"/>
+                     id="messagePic" class="rounded mx-auto mt-4 md-1" alt="No pic :(" width="100%" data-toggle="modal" data-target="#bigPic${message.id}"/>
 
 <#--                надо что-то делать-->
-                <@m.modalPic message.filename 700 700/>
+                <@m.modalPic message.filename message.id 700 700/>
             </#if>
 
           <div class="mx-3 my-1" style="font-size: 20px"><a href="/messages/${message.id}/like"
