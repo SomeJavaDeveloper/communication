@@ -3,7 +3,7 @@ Communication
 
 Create social network using Spring technologies.
 
-####Specification
+#### Specification
 
 - 2 types of users: admin and regular users
 - abilities for every user:
