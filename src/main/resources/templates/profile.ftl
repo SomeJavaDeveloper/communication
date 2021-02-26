@@ -80,13 +80,16 @@
           $(this).next('.custom-file-label').html(event.target.files[0].name);
       });
   </script>
-  <div class="ml-6 mt-2" style="margin-left: 50px">
+  <div class="mt-2" style="margin-left: 50px">
       <#if !isCurrentUser>
-          <#if !isSubscriber>
-            <a class="btn btn-primary" href="/profile/subscribe/${profileId}">Subscribe</a>
-          <#else>
-            <a class="btn btn-primary" href="/profile/unsubscribe/${profileId}">Unsubscribe</a>
-          </#if>
+            <div class="row">
+                <a class="btn btn-primary profileButton" href="/chat?username=${profileName}">Chat</a>
+                <#if !isSubscriber>
+                  <a class="btn btn-primary ml-1 profileButton" href="/profile/subscribe/${profileId}">Sub</a>
+                <#else>
+                  <a class="btn btn-primary ml-1 profileButton" href="/profile/unsubscribe/${profileId}">Unsub</a>
+                </#if>
+            </div>
       </#if>
   </div>
 
