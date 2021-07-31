@@ -14,7 +14,6 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.FieldError;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
@@ -88,16 +87,16 @@ public class RegistrationController {
         return errors;
     }
 
-    @GetMapping("/activate/{code}")
-    public String activate(Model model, @PathVariable String code) {
-        boolean isActivated = registrationService.activateUser(code);
-
-        if (isActivated) {
-            model.addAttribute("message", "User successfully activated");
-        } else {
-            model.addAttribute("message", "Activation code is not found!");
-        }
-
-        return "login";
-    }
+//    @GetMapping("/activate/{code}")
+//    public String activate(Model model, @PathVariable String code) {
+//        boolean isActivated = registrationService.activateUser(code);
+//
+//        if (isActivated) {
+//            model.addAttribute("message", "User successfully activated");
+//        } else {
+//            model.addAttribute("message", "Activation code is not found!");
+//        }
+//
+//        return "login";
+//    }
 }

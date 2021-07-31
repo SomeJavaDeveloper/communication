@@ -6,22 +6,21 @@ import com.example.communication.model.User;
 import com.example.communication.repository.UserRepository;
 import java.io.IOException;
 import java.util.Collections;
-import java.util.UUID;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
-import org.springframework.util.StringUtils;
 import org.springframework.web.multipart.MultipartFile;
 
 @Service
 public class RegistrationService {
 
-  private final MailSender mailSender;
+//  private final MailSender mailSender;
 
   private final UserRepository repository;
 
-  public RegistrationService(MailSender mailSender,
+  public RegistrationService(
+    //MailSender mailSender,
       UserRepository repository) {
-    this.mailSender = mailSender;
+    //this.mailSender = mailSender;
     this.repository = repository;
   }
 
@@ -35,35 +34,37 @@ public class RegistrationService {
     user.setActive(false);
     user.setRoles(Collections.singleton(Role.USER));
     user.setPassword(encoder.encode(user.getPassword()));
-    user.setActivationCode(UUID.randomUUID().toString());
+//    user.setActivationCode(UUID.randomUUID().toString());
     ControllerUtils.saveMessage(file, user);
 
-    if (!StringUtils.isEmpty(user.getEmail())) {
-      String message = String.format(
-          "Hello, %s! \n" +
-              "Welcome to Sweater. Please, visit next link: https://communication-network.herokuapp.com/activate/%s",
-          user.getUsername(),
-          user.getActivationCode()
-      );
-
-      mailSender.send(user.getEmail(), "Activation code", message);
-    }
-
-    return true;
-  }
-
-  public boolean activateUser(String code) {
-    User user = repository.findByActivationCode(code);
-
-    if (user == null) {
-      return false;
-    }
-
-    user.setActivationCode(null);
     user.setActive(true);
 
-    repository.save(user);
+//    if (!StringUtils.isEmpty(user.getEmail())) {
+//      String message = String.format(
+//          "Hello, %s! \n" +
+//              "Welcome to Sweater. Please, visit next link: https://communication-network.herokuapp.com/activate/%s",
+//          user.getUsername(),
+//          user.getActivationCode()
+//      );
+
+//      mailSender.send(user.getEmail(), "Activation code", message);
+//    }
 
     return true;
   }
+
+//  public boolean activateUser(String code) {
+//    User user = repository.findByActivationCode(code);
+//
+//    if (user == null) {
+//      return false;
+//    }
+//
+//    user.setActivationCode(null);
+//    user.setActive(true);
+//
+//    repository.save(user);
+//
+//    return true;
+//  }
 }

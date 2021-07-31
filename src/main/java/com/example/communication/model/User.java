@@ -53,7 +53,7 @@ public class User implements UserDetails, Serializable {
     @NotEmpty(message = "Email cannot be empty")
     private String email;
 
-    private String activationCode;
+//    private String activationCode;
 
     private boolean active;
 
